@@ -1,0 +1,35 @@
+.wrapper {
+    color: whitesmoke;
+}
+
+.imgDiv {
+    display: flex;
+    box-shadow: 0 0 10px 2px white;
+    margin: 0;
+    overflow: hidden;
+}
+
+.imgDiv img {
+    object-fit: cover;
+}
+
+.episodes {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.episodes > div {
+    margin: 2px 40px 2px 0;
+    padding: 20px;
+    background: linear-gradient(to right, purple 0%, #280033 50%);
+}
+
+.flexedDiv {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.flexedDiv div:nth-child(2) {
+    margin-left: 20px;
+}

@@ -1,0 +1,5 @@
+.layout {
+    padding: 40px;
+    background-color: purple;
+    min-height: calc(100vh - 58px);
+}
