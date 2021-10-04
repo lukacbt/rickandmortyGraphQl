@@ -6,6 +6,8 @@
     top: 0;
     left: 0;
     z-index: 1;
+    display: flex;
+    justify-content: space-between;
 }
 
 .header a {
@@ -16,3 +18,8 @@
 .header a:hover {
     text-shadow: 0 0 3px white;
 }
+
+.searchHolder {
+    display: flex;
+    justify-content: center;
+  }

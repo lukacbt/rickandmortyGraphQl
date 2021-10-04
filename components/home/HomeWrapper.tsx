@@ -1,23 +1,32 @@
+import { useContext } from "react"
 import { FC } from "react"
-import { useSearch } from "../../hooks"
+import { SearchContext } from "../../context"
 import { Character, Props } from "../../pages"
 import { CharacterCard } from "./CharacterCard"
 import styles from "./Home.module.css"
+import { Pagination } from "antd"
+import 'antd/dist/antd.css';
+import { Type } from "../../hooks"
 
 export const HomeWrapper: FC<Props> = ({ characters, count }) => {
-    const { handleSearch, search, searchData, handleChange } = useSearch("/api/searchCharacter")
+    const { searchData, current, searchedFor, handleSearch } = useContext(SearchContext)
+
+    const handleChange = (page: number) => {
+      handleSearch(page, Type.PAGINATION)
+    }
 
     return (
       <>
-        <div className={styles.searchHolder}>
-          <input value={search} onChange={handleChange} />
-          <button onClick={handleSearch}>Search</button>
-        </div>
+        {
+          searchedFor
+          && <h2>You searched for "{searchedFor}"</h2>
+        }
+        <Pagination pageSize={20} current={current} showSizeChanger={false} onChange={handleChange} total={searchData.count ? searchData.count : count} />
         <div className={styles.container}>
           {
-            searchData?.data?.characters?.results
+            searchData?.count > 0
             ?
-            searchData.data.characters.results.map((ch: Character) => {
+            searchData.characters.map((ch: Character) => {
               return <CharacterCard key={ch.id} {...ch} />
             })
             :
